@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spatio-View Client</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        .box { border: 1px solid #ddd; padding: 20px; display: inline-block; }
+        button { padding: 10px 15px; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Hello World! Spatio-View FE</h1>
+    <div class="box">
+        <h3>API Control Panel</h3>
+        <button onclick="callApi('/health')">Health Check</button>
+        <button onclick="callApi('/log')">Print Log</button>
+        <button onclick="callApi('/crash')" style="color: red;">Crash Server</button>
+        <p id="response">버튼을 눌러 API를 호출하세요.</p>
+    </div>
+
+    <script>
+        async function callApi(path) {
+            const resEl = document.getElementById('response');
+            try {
+                const response = await fetch('http://100.64.0.1:30080' + path);
+                const text = await response.text();
+                resEl.innerText = `Response: ${text}`;
+            } catch (err) {
+                resEl.innerText = 'Error: 서버가 종료되었거나 응답이 없습니다.';
+            }
+        }
+    </script>
+</body>
+</html>

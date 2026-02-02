@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spatio-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spatio-frontend
+  template:
+    metadata:
+      labels:
+        app: spatio-frontend
+    spec:
+      containers:
+      - name: spatio-frontend
+        image: spatio-frontend:v2
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spatio-frontend
+spec:
+  selector:
+    app: spatio-frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
