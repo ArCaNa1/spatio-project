@@ -1,8 +1,8 @@
 환경 구성
 
-OS: Windows 11 WSL2 (Ubuntu 22.04 LTS)
-Container: Docker Desktop
-Orchestration:k3s (Lightweight Kubernetes)
+OS: Windows 11 WSL2 (Ubuntu 22.04 LTS)  
+Container: Docker Desktop  
+Orchestration:k3s (Lightweight Kubernetes)  
 Package Management: Helm v3 (Kubernetes App Manager)
 
 실행 및 배포 가이드
@@ -11,7 +11,7 @@ Package Management: Helm v3 (Kubernetes App Manager)
 docker build -t arcana1/spatio-backend:v1.0 ./backend
 docker tag spatio-backend:latest arcana1/spatio-backend:v1.0
 
-2.외부 리포지토리 배포
+2. 외부 리포지토리 배포
 docker push arcana1/spatio-backend:v1.0
 
 3. 쿠버네티스 리소스 반영
